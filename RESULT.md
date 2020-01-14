@@ -1,0 +1,3 @@
+This code runs two threads in parallelle. Both functions change a global variable i. One function increments it 1 000 000 times and the other decrements it 1 000 000 times. The expected result is that the global variable i remains 0, but instead it outputs an incorrect number. 
+
+The reason for this is that both threads tries to edit i at the same time. Because there is no mutex lock on the global variable both threads try to change it at the same time. This could result in one thread believing it completed changing a variable when in fact it did not affect it at all. This problem could be avoided with a mutex lock as variable i would only be allowed to be changed by one thread at a time. 
